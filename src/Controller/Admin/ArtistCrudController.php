@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Artist;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
@@ -16,34 +17,49 @@ class ArtistCrudController extends AbstractCrudController
         return Artist::class;
     }
 
+   
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setEntityLabelInSingular('artiste')
+            ->setEntityLabelInPlural('artistes')
+            ->setPageTitle('index', 'Les artistes')
+            ->setPageTitle('new', 'Créer un artiste')
+            ->setPageTitle('edit', fn (Artist $artist) => sprintf('Modifier <b>%s</b>', $artist->getArtistdisplayname()))
+            ->setPageTitle('detail', fn (Artist $artist) => (string) $artist)
+        ;
+    }
+
     public function configureFilters(Filters $filters): Filters
     {
         return $filters
             ->add('artistid')
             ->add('artistdisplayname')
             ->add('artistbegindate')
-        ;
+            ->add('artistenddate')
+            ->add('artistulanurl')
+            ->add('artistwikidataurl')
+            ->add('artistalphasort')
+            ;
     }
 
     
     public function configureFields(string $pageName): iterable
     {
         return [
-            //Field::new('artistid'),
-            Field::new('artistdisplayname'),
-            Field::new('artistbegindate'),
-            Field::new('artistenddate'),
-            Field::new('artistgender'),
-            UrlField::new('artistulanurl'),
-            UrlField::new('artistwikidataurl'),
-            Field::new('artistalphasort'),
-            /*
-            AssociationField::new('roleartistid')->setCrudController(RoleartistCrudController::class),
-            AssociationField::new('nationalityid')->setCrudController(NationalityartistCrudController::class),
-            AssociationField::new('artistprefixid')->setCrudController(ArtistprefixCrudController::class),
-            AssociationField::new('artistsufixid')->setCrudController(ArtistsuffixCrudController::class),
-            AssociationField::new('oeuvreid')->setCrudController(OeuvreCrudController::class),
-            */
+            Field::new('artistid', 'ID')->hideOnForm()->hideOnIndex(),
+            Field::new('artistdisplayname', 'Nom'),
+            Field::new('artistalphasort', 'Surnom'),
+            AssociationField::new('artistprefixid', 'Prefix')->autocomplete(),
+            AssociationField::new('artistsufixid', 'Suffix')->autocomplete(),
+            Field::new('artistbegindate', 'Date de naissance'),
+            Field::new('artistenddate', 'Date de décès'),
+            Field::new('artistgender', 'Genre'),
+            UrlField::new('artistulanurl', 'Getty.edu'),
+            UrlField::new('artistwikidataurl', 'Wiki'),
+            AssociationField::new('roleartistid', 'Role')->autocomplete(),
+            AssociationField::new('nationalityid', 'Nationnalité')->autocomplete(),
+            AssociationField::new('oeuvreid', 'Nb Oeuvres')->autocomplete(),
         ];
     }
     

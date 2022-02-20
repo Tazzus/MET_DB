@@ -46,5 +46,14 @@ class Roleartist
         return $this;
     }
 
+    public function __toString(): string
+    {
+        if($this->artistrole == null){
+            return "";
+        } else {
+            return $this->artistrole;
+        }
+    }
+
 
 }

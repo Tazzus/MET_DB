@@ -46,5 +46,14 @@ class Artistprefix
         return $this;
     }
 
+    public function __toString(): string
+    {
+        if($this->artistprefix == null){
+            return "";
+        } else {
+            return $this->artistprefix;
+        }
+    }
+
 
 }

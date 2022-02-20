@@ -46,5 +46,14 @@ class Nationalityartist
         return $this;
     }
 
+    public function __toString(): string
+    {
+        if($this->nationality == null){
+            return "";
+        } else {
+            return $this->nationality;
+        }
+    }
+
 
 }
