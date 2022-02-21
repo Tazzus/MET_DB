@@ -8,6 +8,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 
 class NationalityartistCrudController extends AbstractCrudController
 {
@@ -42,5 +44,14 @@ class NationalityartistCrudController extends AbstractCrudController
             IdField::new('nationalityid', 'ID')->hideOnForm()->hideOnIndex(),
             TextField::new('nationality', 'Nationalité'),
         ];
+    }
+
+    public function configureActions(Actions $actions): Actions
+    {
+
+        return $actions
+            ->setPermission(Action::NEW, 'ROLE_ADMIN')
+            ->setPermission(Action::EDIT, 'ROLE_ADMIN')
+            ->setPermission(Action::DELETE, 'ROLE_ADMIN');
     }
 }

@@ -10,6 +10,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 
 class ArtistCrudController extends AbstractCrudController
 {
@@ -18,7 +20,7 @@ class ArtistCrudController extends AbstractCrudController
         return Artist::class;
     }
 
-   
+
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
@@ -27,8 +29,7 @@ class ArtistCrudController extends AbstractCrudController
             ->setPageTitle('index', 'Les artistes')
             ->setPageTitle('new', 'Créer un artiste')
             ->setPageTitle('edit', fn (Artist $artist) => sprintf('Modifier <b>%s</b>', $artist->getArtistdisplayname()))
-            ->setPageTitle('detail', fn (Artist $artist) => (string) $artist)
-        ;
+            ->setPageTitle('detail', fn (Artist $artist) => (string) $artist);
     }
 
     public function configureFilters(Filters $filters): Filters
@@ -40,11 +41,10 @@ class ArtistCrudController extends AbstractCrudController
             ->add('artistenddate')
             ->add('artistulanurl')
             ->add('artistwikidataurl')
-            ->add('artistalphasort')
-            ;
+            ->add('artistalphasort');
     }
 
-    
+
     public function configureFields(string $pageName): iterable
     {
         return [
@@ -63,5 +63,13 @@ class ArtistCrudController extends AbstractCrudController
             AssociationField::new('oeuvreid', 'Nb Oeuvres')->autocomplete(),
         ];
     }
-    
+
+    public function configureActions(Actions $actions): Actions
+    {
+
+        return $actions
+            ->setPermission(Action::NEW, 'ROLE_ADMIN')
+            ->setPermission(Action::EDIT, 'ROLE_ADMIN')
+            ->setPermission(Action::DELETE, 'ROLE_ADMIN');
+    }
 }

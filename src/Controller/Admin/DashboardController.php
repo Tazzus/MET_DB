@@ -37,6 +37,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
+use EasyCorp\Bundle\EasyAdminBundle\Config\UserMenu;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class DashboardController extends AbstractDashboardController
 {
@@ -119,5 +121,20 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('🔹 Référentiels', null, Repository::class);
         yield MenuItem::linkToCrud('🔹 Droits d\'auteurs', null, Rightsandreproduction::class);
         yield MenuItem::linkToCrud('🔹 Étiquettes', null, Tag::class);
+    }
+
+    public function configureUserMenu(UserInterface $user): UserMenu
+    {
+        // Usually it's better to call the parent method because that gives you a
+        // user menu with some menu items already created ("sign out", "exit impersonation", etc.)
+        // if you prefer to create the user menu from scratch, use: return UserMenu::new()->...
+        return parent::configureUserMenu($user)
+            // use the given $user object to get the user name
+            ->setName($user->getUserIdentifier())
+
+            // you can use any type of menu item, except submenus
+            ->addMenuItems([
+                MenuItem::linkToLogout('Logout', 'fa fa-sign-out'),
+            ]);
     }
 }
