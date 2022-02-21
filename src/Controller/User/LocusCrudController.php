@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Admin;
+namespace App\Controller\User;
 
 use App\Entity\Locus;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -9,6 +9,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 
 class LocusCrudController extends AbstractCrudController
 {
@@ -44,5 +46,11 @@ class LocusCrudController extends AbstractCrudController
             TextField::new('locusname', 'Nom du locus'),
             AssociationField::new('localeid', 'Locale')->autocomplete()->hideOnIndex(),
         ];
+    }
+
+    public function configureActions(Actions $actions): Actions
+    {
+        return $actions
+            ->disable(Action::NEW, Action::DELETE, Action::EDIT);
     }
 }

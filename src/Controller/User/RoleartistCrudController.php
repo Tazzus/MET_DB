@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Admin;
+namespace App\Controller\User;
 
 use App\Entity\Roleartist;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -8,6 +8,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 
 class RoleartistCrudController extends AbstractCrudController
 {
@@ -43,6 +45,12 @@ class RoleartistCrudController extends AbstractCrudController
             IdField::new('roleartistid', 'ID')->hideOnForm()->hideOnIndex(),
             TextField::new('artistrole', 'Rôle artiste'),
         ];
+    }
+
+    public function configureActions(Actions $actions): Actions
+    {
+        return $actions
+            ->disable(Action::NEW, Action::DELETE, Action::EDIT);
     }
     
 }

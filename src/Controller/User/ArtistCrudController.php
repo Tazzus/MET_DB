@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Admin;
+namespace App\Controller\User;
 
 use App\Entity\Artist;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -10,6 +10,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 
 class ArtistCrudController extends AbstractCrudController
 {
@@ -60,5 +62,11 @@ class ArtistCrudController extends AbstractCrudController
             AssociationField::new('nationalityid', 'Nationnalité')->autocomplete(),
             AssociationField::new('oeuvreid', 'Nb Oeuvres')->autocomplete(),
         ];
+    }
+
+    public function configureActions(Actions $actions): Actions
+    {
+        return $actions
+            ->disable(Action::NEW, Action::DELETE, Action::EDIT);
     }
 }

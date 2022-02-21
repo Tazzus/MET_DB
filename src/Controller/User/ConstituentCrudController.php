@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Admin;
+namespace App\Controller\User;
 
 use App\Entity\Constituent;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -8,6 +8,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 
 class ConstituentCrudController extends AbstractCrudController
 {
@@ -42,5 +44,11 @@ class ConstituentCrudController extends AbstractCrudController
             IdField::new('constituentid', 'ID')->hideOnForm()->hideOnIndex(),
             TextField::new('constituentnumber', 'Numéro contituant'),
         ];
+    }
+
+    public function configureActions(Actions $actions): Actions
+    {
+        return $actions
+            ->disable(Action::NEW, Action::DELETE, Action::EDIT);
     }
 }

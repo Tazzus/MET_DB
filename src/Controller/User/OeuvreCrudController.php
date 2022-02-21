@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Admin;
+namespace App\Controller\User;
 
 use App\Entity\Oeuvre;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -13,6 +13,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 
 class OeuvreCrudController extends AbstractCrudController
 {
@@ -112,5 +114,11 @@ class OeuvreCrudController extends AbstractCrudController
             AssociationField::new('classificationid', 'Classification')->autocomplete()->hideOnIndex(),
             AssociationField::new('geographytypeid', 'Type geographique')->autocomplete()->hideOnIndex(),
         ];
+    }
+
+    public function configureActions(Actions $actions): Actions
+    {
+        return $actions
+            ->disable(Action::NEW, Action::DELETE, Action::EDIT);
     }
 }

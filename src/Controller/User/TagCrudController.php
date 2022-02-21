@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Admin;
+namespace App\Controller\User;
 
 use App\Entity\Tag;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -9,6 +9,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 
 class TagCrudController extends AbstractCrudController
 {
@@ -48,5 +50,11 @@ class TagCrudController extends AbstractCrudController
             UrlField::new('tagaturl', 'getty.edu'),
             UrlField::new('tagwikidataurl', 'Wiki'),
         ];
+    }
+
+    public function configureActions(Actions $actions): Actions
+    {
+        return $actions
+            ->disable(Action::NEW, Action::DELETE, Action::EDIT);
     }
 }

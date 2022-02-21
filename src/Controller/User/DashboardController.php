@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Admin;
+namespace App\Controller\User;
 
 use App\Entity\Artist;
 use App\Entity\Artistprefix;
@@ -49,7 +49,7 @@ class DashboardController extends AbstractDashboardController
         $this->adminUrlGenerator = $adminUrlGenerator;
     }
 
-    #[Route('/admin', name: 'admin')]
+    #[Route('/', name: 'user')]
     public function index(): Response
     {
         $url = $this->adminUrlGenerator
@@ -78,13 +78,13 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('MET DB - ADMIN');
+            ->setTitle('MET DB - USER');
     }
 
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Tableau de bord', 'fa fa-home');
-        yield MenuItem::linkToUrl('Vers côté user', 'fa fa-user', '/');
+        yield MenuItem::linkToUrl('Vers côté admin', 'fa fa-user', '/admin');
 
         yield MenuItem::section('Artistes', 'fa fa-users');
         yield MenuItem::linkToCrud('🔹 Les artistes', null, Artist::class);

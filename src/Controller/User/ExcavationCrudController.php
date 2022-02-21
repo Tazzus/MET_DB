@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Admin;
+namespace App\Controller\User;
 
 use App\Entity\Excavation;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -9,6 +9,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 
 class ExcavationCrudController extends AbstractCrudController
 {
@@ -46,5 +48,11 @@ class ExcavationCrudController extends AbstractCrudController
             TextField::new('excavationname', 'Nom de l\'excavation'),
             AssociationField::new('localeid', 'ID locale')->autocomplete()->hideOnIndex(),
         ];
+    }
+
+    public function configureActions(Actions $actions): Actions
+    {
+        return $actions
+            ->disable(Action::NEW, Action::DELETE, Action::EDIT);
     }
 }
