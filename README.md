@@ -12,3 +12,11 @@ Equipe sur ce projet:
 - Valentin R.
 - Evan P.
 - Adele L.
+
+Requis:
+yarn et symony CLI
+
+/!\ Penser à configurer votre .env.local pour la base de données
+
+Pour démarrer:
+symfony server:start
