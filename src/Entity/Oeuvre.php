@@ -827,8 +827,13 @@ class Oeuvre
 
     public function __toString(): string
     {
-        return $this->getTitleid()->getTitlename();
-        
+        if($this->getTitleid() == null){
+            return "";
+        } else if ($this->getTitleid()->getTitlename()) {
+            return $this->getTitleid()->getTitlename();
+        } else {
+            return "";
+        }
     }
 
 }

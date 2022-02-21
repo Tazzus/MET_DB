@@ -46,5 +46,14 @@ class Repository
         return $this;
     }
 
+    public function __toString(): string
+    {
+        if($this->repository == null){
+            return "";
+        } else {
+            return $this->repository;
+        }
+    }
+
 
 }

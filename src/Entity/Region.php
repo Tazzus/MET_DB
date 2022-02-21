@@ -117,4 +117,13 @@ class Region
         return $this;
     }
 
+    public function __toString(): string
+    {
+        if($this->regionname == null){
+            return "";
+        } else {
+            return $this->regionname;
+        }
+    }
+
 }

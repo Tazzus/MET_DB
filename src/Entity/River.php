@@ -68,5 +68,14 @@ class River
         return $this;
     }
 
+    public function __toString(): string
+    {
+        if($this->rivername == null){
+            return "";
+        } else {
+            return $this->rivername;
+        }
+    }
+
 
 }

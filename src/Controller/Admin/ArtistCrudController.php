@@ -7,6 +7,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
 
@@ -47,7 +48,7 @@ class ArtistCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            Field::new('artistid', 'ID')->hideOnForm()->hideOnIndex(),
+            IdField::new('artistid', 'ID')->hideOnForm()->hideOnIndex(),
             Field::new('artistdisplayname', 'Nom'),
             Field::new('artistalphasort', 'Surnom'),
             AssociationField::new('artistprefixid', 'Prefix')->autocomplete(),
@@ -55,7 +56,7 @@ class ArtistCrudController extends AbstractCrudController
             Field::new('artistbegindate', 'Date de naissance'),
             Field::new('artistenddate', 'Date de décès'),
             Field::new('artistgender', 'Genre'),
-            UrlField::new('artistulanurl', 'Getty.edu'),
+            UrlField::new('artistulanurl', 'getty.edu'),
             UrlField::new('artistwikidataurl', 'Wiki'),
             AssociationField::new('roleartistid', 'Role')->autocomplete(),
             AssociationField::new('nationalityid', 'Nationnalité')->autocomplete(),

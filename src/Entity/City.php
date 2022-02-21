@@ -117,4 +117,13 @@ class City
         return $this;
     }
 
+    public function __toString(): string
+    {
+        if($this->cityname == null){
+            return "";
+        } else {
+            return $this->cityname;
+        }
+    }
+
 }

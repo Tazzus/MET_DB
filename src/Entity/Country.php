@@ -95,4 +95,13 @@ class Country
         return $this;
     }
 
+    public function __toString(): string
+    {
+        if($this->countryname == null){
+            return "";
+        } else {
+            return $this->countryname;
+        }
+    }
+
 }

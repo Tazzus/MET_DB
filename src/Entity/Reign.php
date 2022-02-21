@@ -95,4 +95,13 @@ class Reign
         return $this;
     }
 
+    public function __toString(): string
+    {
+        if($this->leadername == null){
+            return "";
+        } else {
+            return $this->leadername;
+        }
+    }
+
 }

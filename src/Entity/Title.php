@@ -46,5 +46,14 @@ class Title
         return $this;
     }
 
+    public function __toString(): string
+    {
+        if($this->titlename == null){
+            return "";
+        } else {
+            return $this->titlename;
+        }
+    }
+
 
 }

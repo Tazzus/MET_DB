@@ -32,6 +32,7 @@ class RoleartistCrudController extends AbstractCrudController
     {
         return $filters
             ->add('roleartistid')
+            ->add('artistrole')
             ;
     }
 

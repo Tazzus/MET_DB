@@ -46,5 +46,14 @@ class Constituent
         return $this;
     }
 
+    public function __toString(): string
+    {
+        if($this->constituentnumber == null){
+            return "";
+        } else {
+            return $this->constituentnumber;
+        }
+    }
+
 
 }

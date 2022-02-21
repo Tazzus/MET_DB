@@ -46,5 +46,14 @@ class Departement
         return $this;
     }
 
+    public function __toString(): string
+    {
+        if($this->departementname == null){
+            return "";
+        } else {
+            return $this->departementname;
+        }
+    }
+
 
 }

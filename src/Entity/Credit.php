@@ -46,5 +46,14 @@ class Credit
         return $this;
     }
 
+    public function __toString(): string
+    {
+        if($this->creditline == null){
+            return "";
+        } else {
+            return $this->creditline;
+        }
+    }
+
 
 }

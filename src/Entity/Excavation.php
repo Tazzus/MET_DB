@@ -95,4 +95,13 @@ class Excavation
         return $this;
     }
 
+    public function __toString(): string
+    {
+        if($this->excavationname == null){
+            return "";
+        } else {
+            return $this->excavationname;
+        }
+    }
+
 }

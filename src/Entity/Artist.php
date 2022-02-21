@@ -297,4 +297,13 @@ class Artist
         return $this;
     }
 
+    public function __toString(): string
+    {
+        if($this->artistdisplayname == null){
+            return "";
+        } else {
+            return $this->artistdisplayname;
+        }
+    }
+
 }

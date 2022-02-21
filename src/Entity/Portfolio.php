@@ -46,5 +46,14 @@ class Portfolio
         return $this;
     }
 
+    public function __toString(): string
+    {
+        if($this->portfolioname == null){
+            return "";
+        } else {
+            return $this->portfolioname;
+        }
+    }
+
 
 }

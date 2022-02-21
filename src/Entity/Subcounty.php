@@ -117,4 +117,13 @@ class Subcounty
         return $this;
     }
 
+    public function __toString(): string
+    {
+        if($this->subcountyname == null){
+            return "";
+        } else {
+            return $this->subcountyname;
+        }
+    }
+
 }

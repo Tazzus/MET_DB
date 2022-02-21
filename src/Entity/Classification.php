@@ -95,4 +95,13 @@ class Classification
         return $this;
     }
 
+    public function __toString(): string
+    {
+        if($this->classification == null){
+            return "";
+        } else {
+            return $this->classification;
+        }
+    }
+
 }

@@ -90,4 +90,13 @@ class Period
         return $this;
     }
 
+    public function __toString(): string
+    {
+        if($this->periodname == null){
+            return "";
+        } else {
+            return $this->periodname;
+        }
+    }
+
 }

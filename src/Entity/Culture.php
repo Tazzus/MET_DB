@@ -46,5 +46,14 @@ class Culture
         return $this;
     }
 
+    public function __toString(): string
+    {
+        if($this->culturename == null){
+            return "";
+        } else {
+            return $this->culturename;
+        }
+    }
+
 
 }

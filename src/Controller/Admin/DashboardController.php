@@ -92,7 +92,7 @@ class DashboardController extends AbstractDashboardController
 
         yield MenuItem::section('Oeuvres', 'fa fa-palette');
         yield MenuItem::linkToCrud('🔹 Les oeuvres', null, Oeuvre::class);
-        yield MenuItem::linkToCrud('🔹 Noms', null, Objectname::class);
+        yield MenuItem::linkToCrud('🔹 Type d\'objet', null, Objectname::class);
         yield MenuItem::linkToCrud('🔹 Titres', null, Title::class);
         yield MenuItem::linkToCrud('🔹 Galleries', null, Gallery::class);
         yield MenuItem::linkToCrud('🔹 Périodes', null, Period::class);

@@ -140,7 +140,7 @@ class MettableCrudController extends AbstractCrudController
             TextField::new('rightsandreproduction')->hideOnIndex(),
             TextField::new('linkresource')->hideOnIndex(),
             TextField::new('objectwikidataurl')->hideOnIndex(),
-            TextField::new('repository'),
+            TextField::new('repository')->hideOnIndex(),
             TextField::new('tags'),
             UrlField::new('tagaaturl')->hideOnIndex(),
             UrlField::new('tagswikidataurl')->hideOnIndex(),

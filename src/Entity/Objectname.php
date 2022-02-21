@@ -46,5 +46,14 @@ class Objectname
         return $this;
     }
 
+    public function __toString(): string
+    {
+        if($this->objectname == null){
+            return "";
+        } else {
+            return $this->objectname;
+        }
+    }
+
 
 }

@@ -3,7 +3,11 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Repository;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 
 class RepositoryCrudController extends AbstractCrudController
 {
@@ -12,14 +16,31 @@ class RepositoryCrudController extends AbstractCrudController
         return Repository::class;
     }
 
-    /*
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setEntityLabelInSingular('Musée')
+            ->setEntityLabelInPlural('Musées')
+            ->setPageTitle('index', 'Les musées')
+            ->setPageTitle('new', 'Créer un musée')
+            ->setPageTitle('edit', fn (Repository $repository) => sprintf('Modifier <b>%s</b>', $repository->getRepository()))
+            ->setPageTitle('detail', fn (Repository $repository) => (string) $repository);
+    }
+
+
+    public function configureFilters(Filters $filters): Filters
+    {
+        return $filters
+            ->add('repositoryid')
+            ->add('repository');
+    }
+
+
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
+            IdField::new('repositoryid', 'ID')->hideOnForm()->hideOnIndex(),
+            TextField::new('repository', 'Musées'),
         ];
     }
-    */
 }

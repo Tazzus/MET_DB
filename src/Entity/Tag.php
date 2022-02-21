@@ -84,5 +84,14 @@ class Tag
         return $this;
     }
 
+    public function __toString(): string
+    {
+        if($this->tags == null){
+            return "";
+        } else {
+            return $this->tags;
+        }
+    }
+
 
 }

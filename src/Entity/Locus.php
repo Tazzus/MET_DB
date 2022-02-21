@@ -90,4 +90,13 @@ class Locus
         return $this;
     }
 
+    public function __toString(): string
+    {
+        if($this->locusname == null){
+            return "";
+        } else {
+            return $this->locusname;
+        }
+    }
+
 }

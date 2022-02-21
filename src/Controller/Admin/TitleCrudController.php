@@ -3,7 +3,11 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Title;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 
 class TitleCrudController extends AbstractCrudController
 {
@@ -12,14 +16,32 @@ class TitleCrudController extends AbstractCrudController
         return Title::class;
     }
 
-    /*
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setEntityLabelInSingular('titre')
+            ->setEntityLabelInPlural('titres')
+            ->setPageTitle('index', 'Ls titres')
+            ->setPageTitle('new', 'Créer un titre')
+            ->setPageTitle('edit', fn (Title $title) => sprintf('Modifier <b>%s</b>', $title->getTitlename()))
+            ->setPageTitle('detail', fn (Title $title) => (string) $title)
+        ;
+    }
+
+    public function configureFilters(Filters $filters): Filters
+    {
+        return $filters
+            ->add('titleid')
+            ->add('titlename')
+            ;
+    }
+
+    
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
+            IdField::new('titleid', 'ID')->hideOnForm()->hideOnIndex(),
+            TextField::new('titlename', 'Titre'),
         ];
     }
-    */
 }

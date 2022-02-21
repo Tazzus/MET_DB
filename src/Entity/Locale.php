@@ -130,4 +130,13 @@ class Locale
         return $this;
     }
 
+    public function __toString(): string
+    {
+        if($this->localename == null){
+            return "";
+        } else {
+            return $this->localename;
+        }
+    }
+
 }

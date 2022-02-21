@@ -46,5 +46,14 @@ class Gallery
         return $this;
     }
 
+    public function __toString(): string
+    {
+        if($this->gallerynumber == null){
+            return "";
+        } else {
+            return $this->gallerynumber;
+        }
+    }
+
 
 }

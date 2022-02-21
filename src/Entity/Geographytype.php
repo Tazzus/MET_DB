@@ -90,4 +90,13 @@ class Geographytype
         return $this;
     }
 
+    public function __toString(): string
+    {
+        if($this->geographytype == null){
+            return "";
+        } else {
+            return $this->geographytype;
+        }
+    }
+
 }
