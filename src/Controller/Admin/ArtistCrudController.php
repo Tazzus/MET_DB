@@ -35,11 +35,18 @@ class ArtistCrudController extends AbstractCrudController
         return $filters
             ->add('artistid')
             ->add('artistdisplayname')
+            ->add('artistalphasort')
+            ->add('artistprefixid')
+            ->add('artistsufixid')
             ->add('artistbegindate')
             ->add('artistenddate')
+            ->add('artistgender')
             ->add('artistulanurl')
             ->add('artistwikidataurl')
-            ->add('artistalphasort');
+            ->add('roleartistid')
+            ->add('nationalityid')
+            //->add('oeuvreid')
+            ;
     }
 
 
@@ -50,7 +57,7 @@ class ArtistCrudController extends AbstractCrudController
             Field::new('artistdisplayname', 'Nom'),
             Field::new('artistalphasort', 'Surnom'),
             AssociationField::new('artistprefixid', 'Prefix')->autocomplete(),
-            AssociationField::new('artistsufixid', 'Suffix')->autocomplete(),
+            AssociationField::new('artistprefixid', 'Suffix')->autocomplete(),
             Field::new('artistbegindate', 'Date de naissance'),
             Field::new('artistenddate', 'Date de décès'),
             Field::new('artistgender', 'Genre'),

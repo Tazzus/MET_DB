@@ -37,11 +37,18 @@ class ArtistCrudController extends AbstractCrudController
         return $filters
             ->add('artistid')
             ->add('artistdisplayname')
+            ->add('artistalphasort')
+            ->add('artistprefixid')
+            ->add('artistsufixid')
             ->add('artistbegindate')
             ->add('artistenddate')
+            ->add('artistgender')
             ->add('artistulanurl')
             ->add('artistwikidataurl')
-            ->add('artistalphasort');
+            ->add('roleartistid')
+            ->add('nationalityid')
+            //->add('oeuvreid')
+            ;
     }
 
 
